@@ -1,4 +1,4 @@
-# Template repository for EspoCRM extensions : ext-fields
+# for EspoCRM extensions : ext-fields
 
 ## License
 
