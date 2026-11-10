@@ -139,9 +139,9 @@ Extensions will be installed automatically after running the command `npm run al
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
 1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
-2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/{@name}` and apply needed modifications to files.
+2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/Ext-fields` and apply needed modifications to files.
 3. Remove files from `site/custom`.
-4. Run `npm run sync`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{@name}` dir).
+4. Run `npm run sync`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/Ext-fields` dir).
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
@@ -152,9 +152,9 @@ You can remove `copy-custom.js` from the repository if you don't plan to use it 
 
 If your extension requires additional libraries, they can be installed by Composer:
 
-1. Create a file `src/files/custom/Espo/Modules/{@name}/composer.json` with your dependencies. You can change dir to this directory and add composer dependencies using *composer require*.
+1. Create a file `src/files/custom/Espo/Modules/Ext-fields/composer.json` with your dependencies. You can change dir to this directory and add composer dependencies using *composer require*.
 2. Once you run `npm run all` or `npm run composer-install`, composer dependencies will be automatically installed.
-3. Create a file `src/files/custom/Espo/Modules/{@name}/Resources/autoload.json`.
+3. Create a file `src/files/custom/Espo/Modules/Ext-fields/Resources/autoload.json`.
 
 
 The `autoload.json` file defines paths for namespaces:
@@ -162,7 +162,7 @@ The `autoload.json` file defines paths for namespaces:
 ```json
 {
     "psr-4": {
-        "LibraryNamespace\\": "custom/Espo/Modules/{@name}/vendor/<vendor-name>/<library-name>/path/to/src"
+        "LibraryNamespace\\": "custom/Espo/Modules/Ext-fields/vendor/<vendor-name>/<library-name>/path/to/src"
     }
 }
 ```
@@ -175,7 +175,7 @@ For static analysis, add to `phpstan.neon`:
     excludePaths:
         - src/files/custom/Espo/Modules/*/vendor
     scanDirectories:
-        - site/custom/Espo/Modules/{@name}/vendor
+        - site/custom/Espo/Modules/Ext-fields/vendor
 ```
 
 Note: The extension build will contain only the `vendor` directory without the `composer.json` file.
@@ -223,7 +223,7 @@ vendor/bin/phpunit
 or with a path:
 
 ```
-vendor/bin/phpunit tests/unit/Espo/Modules/{@name}
+vendor/bin/phpunit tests/unit/Espo/Modules/Ext-fields
 ```
 
 or:
@@ -232,7 +232,7 @@ or:
 npm run unit-tests
 ```
 
-Unit tests should be placed in `tests/unit/Espo/Modules/{@name}` directory and be in `tests\unit\Espo\Modules\{@name}`
+Unit tests should be placed in `tests/unit/Espo/Modules/Ext-fields` directory and be in `tests\unit\Espo\Modules\Ext-fields`
 namespace.
 
 ### Static analysis
@@ -286,7 +286,7 @@ You need to build a test instance first:
 Command to run integration tests:
 
 ```
-(npm run sync; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+(npm run sync; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/Ext-fields)
 ```
 
 or:
@@ -297,8 +297,8 @@ npm run integration-tests
 
 Note that integration tests needs the full Espo installation.
 
-Integration tests should be placed in `tests/integration/Espo/Modules/{@name}` directory
-and be in `tests\integration\Espo\Modules\{@name}` namespace.
+Integration tests should be placed in `tests/integration/Espo/Modules/Ext-fields` directory
+and be in `tests\integration\Espo\Modules\Ext-fields` namespace.
 
 ### GitHub workflow
 
@@ -313,8 +313,8 @@ You need to set the following paths to be ignored in your IDE:
 * `site/build`
 * `site/custom/`
 * `site/client/custom/`
-* `site/tests/unit/Espo/Modules/{@name}`
-* `site/tests/integration/Espo/Modules/{@name}`
+* `site/tests/unit/Espo/Modules/Ext-fields`
+* `site/tests/integration/Espo/Modules/Ext-fields`
 
 ### File watcher
 
@@ -342,12 +342,12 @@ In `extension.json`, add a command that will bundle the needed library into an A
 }
 ```
 
-Add the library module path to `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/jsLibs.json`
+Add the library module path to `src/files/custom/Espo/Modules/Ext-fields/Resources/metadata/app/jsLibs.json`
 
 ```json
 {
     "some-lib": {
-        "path": "client/custom/modules/{@nameHyphen}/lib/some-lib.js"
+        "path": "client/custom/modules/ext-fields/lib/some-lib.js"
     }
 }
 ```

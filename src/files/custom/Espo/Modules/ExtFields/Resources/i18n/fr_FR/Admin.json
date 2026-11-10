@@ -1,0 +1,6 @@
+{
+    "fieldTypes": {
+        "nationalNumber": "Numéro national",
+        "ibanNumber": "Numéro iban"
+    }
+}

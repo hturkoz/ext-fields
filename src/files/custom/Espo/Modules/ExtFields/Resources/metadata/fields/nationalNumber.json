@@ -1,0 +1,21 @@
+{
+    "view": "ext-fields:views/fields/national-number",
+    "composite": true,
+    "naming": "prefix",
+    "actualFields": ["countryCode", "number"],
+    "fields": {
+        "countryCode": { "type": "varchar", "maxLength": 2, "utility": true },
+        "number": { "type": "varchar", "maxLength": 64 }
+    },
+    "validationList": ["required", "valid"],
+    "personalData": true,
+    "filter": false,
+    "params": [
+        { "name": "required", "type": "bool", "default": false },
+        { "name": "audited", "type": "bool" },
+        { "name": "allowInvalid", "type": "bool", "default": false },
+        { "name": "defaultCountry", "type": "varchar", "default": "BE" },
+        { "name": "idType", "type": "enum",
+          "options": ["nationalId"], "default": "nationalId" }
+    ]
+}

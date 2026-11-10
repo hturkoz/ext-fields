@@ -1,0 +1,8 @@
+{
+    "fields": {
+        "allowInvalid": "Allow Invalid"
+    },
+    "tooltips": {
+        "allowInvalid": "The value is flagged if invalid, but saving is not blocked."
+    }
+}

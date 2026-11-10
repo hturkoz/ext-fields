@@ -1,0 +1,10 @@
+{
+    "labels": {
+        "countryCode": "Pays",
+        "number": "Numéro"
+    },
+    "messages": {
+        "invalidIdNumber": "Invalid National Number",
+        "invalidIban": "Invalid Iban Number"
+    }
+}

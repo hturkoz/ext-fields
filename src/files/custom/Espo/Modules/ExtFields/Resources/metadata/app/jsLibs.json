@@ -1,0 +1,8 @@
+{
+  "idnumbers": {
+    "path": "client/custom/modules/ext-fields/lib/idnumbers.js"
+  },
+  "ibantools": {
+    "path": "client/custom/modules/ext-fields/lib/ibantools.js"
+  }
+}

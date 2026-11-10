@@ -9,3 +9,12 @@
 /vendor
 /.phpunit.result.cache
 /composer.phar
+.github/workflows/test.yml.disabled
+client/custom/modules/ext-fields/lib/.DS_Store
+client/custom/modules/ext-fields/lib/idnumbers.js
+config-default.json
+config-default.json
+tests/unit/Espo/Modules/MyModuleName/.dummy
+tests/unit/Espo/Modules/Ext-fields/.dummy
+tests/integration/Espo/Modules/MyModuleName/.dummy
+tests/integration/Espo/Modules/Ext-fields/.dummy

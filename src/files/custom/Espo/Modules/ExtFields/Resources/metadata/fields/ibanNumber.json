@@ -1,0 +1,19 @@
+{
+    "view": "ext-fields:views/fields/iban-number",
+    "composite": true,
+    "naming": "prefix",
+    "actualFields": ["countryCode", "number"],
+    "fields": {
+        "countryCode": {"type": "varchar", "maxLength": 2},
+        "number": {"type": "varchar", "maxLength": 34}
+    },
+    "validationList": ["required", "valid"],
+    "personalData": true,
+    "filter": false,
+    "params": [
+        {"name": "required", "type": "bool", "default": false},
+        {"name": "audited", "type": "bool"},
+        {"name": "allowInvalid", "type": "bool", "default": false}
+
+    ]
+}
